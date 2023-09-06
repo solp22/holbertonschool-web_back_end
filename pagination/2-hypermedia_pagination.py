@@ -41,7 +41,7 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """returns hypermedia pagination"""
-        total_pages = len(self.dataset()) / page_size
+        total_pages = math.ciel(len(self.dataset())) / page_size
         prev_page = 0
         next_page = 0
 
