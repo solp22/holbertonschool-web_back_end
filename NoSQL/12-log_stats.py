@@ -20,3 +20,4 @@ if __name__ == "__main__":
     status = collection.count_documents(
         {"method": "GET", "path": "/status"})
     print(f"{status} status check")
+print("hola")
