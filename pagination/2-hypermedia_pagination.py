@@ -33,8 +33,7 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """return the appropriate page of the dataset """
-        assert type(page) == int
-        assert type(page_size) == int
+        assert isinstance(page, int) and isinstance(page_size, int)
         assert page > 0 and page_size > 0
         range = index_range(page, page_size)
         data = self.dataset()
@@ -42,7 +41,8 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """returns hypermedia pagination"""
-        total_pages = len(self.dataset()) / page_size
+        data = self.get_page(page, page_size)
+        total_pages = math.ceil(len(self.dataset()) / page_size)
         prev_page = 0
         next_page = 0
 
@@ -59,7 +59,7 @@ class Server:
         hyper_dict = {
             "page_size": page_size,
             "page": page,
-            "data": self.get_page(page, page_size),
+            "data": data,
             "next_page": next_page,
             "prev_page": prev_page,
             "total_pages": total_pages
