@@ -1,4 +1,4 @@
-import Building from "./5-building";
+import Building from './5-building';
 
 export default class SkyHighBuiling extends Building {
   constructor(sqft, floors) {
