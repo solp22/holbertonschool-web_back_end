@@ -1,37 +1,29 @@
 import Currency from './3-currency';
 
-export default class Pricing extends Currency {
+export default class Pricing{
   constructor(amount, currency) {
-    super(currency)
     this._amount = amount;
+    this._currency = currency;
   }
 
   get amount() {
     return this._amount;
   }
 
-  get code() {
-    return this._code;
-  }
-
-  get name() {
-    return this._name;
+  get currency() {
+    return this._currency;
   }
 
   set amount(amount) {
     this._amount = amount;
   }
 
-  set code(code) {
-    this._code = code;
-  }
-
-  set name(name) {
-    this._name = name;
+  set currency(currency) {
+    this._currency = currency;
   }
 
   displayFullPrice() {
-    return `${this._amount} ${this._name} (${this._code})`;
+    return `${this._amount} ${this._currency.name} (${this._currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
